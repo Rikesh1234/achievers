@@ -1,0 +1,43 @@
+<section class="test-section">
+  <div class="container">
+    <% categories.forEach(cat => { %> <% if (cat.slug === "blog") { %>
+    <h2 class="sub-title text-center" data-aos="fade-up"><%= cat.title %></h2>
+    <div class="summary text-center" data-aos="fade-up">
+      <%- truncateWords(cat.content, 50) %>
+    </div>
+    <% } %> <% }) %>
+    <div class="row" data-aos="fade-up">
+      <% if (posts && posts.length > 0) { %> <% posts.forEach(post => { %> <% if
+      (post.category[0].slug === 'entrance-preparation') { %>
+      <div class="course-card col-12 col-md-6 col-lg-4">
+        <a href="/post/<%= post._id %>">
+          <img
+            src="<%= post.featured_image ? post.featured_image : './theme/IG_Academy/images/default.png' %>"
+            alt="<%= post.title %>"
+          />
+          <div class="course-content">
+            <span class="category"><%= post.tag_line %</span>
+            <h3><%= post.title %</h3>
+            <p><%- truncateWords(cat.summary, 50) %></p>
+            <div class="course-meta">
+              <% page.customFields.forEach(field => { %> <% if (field.fieldName
+              === 'Field_1') { %>
+              <span><i class="fa fa-users"></i> <%= field.value %></span>
+              <% } else if (field.fieldName === 'Field_2') { %>
+              <span><i class="fa fa-clock-o"></i> <%= field.value %>.</span>
+              <% } else if (field.fieldName === 'Field_3') { %>
+              <span class="price"><%= field.value %></span>
+              <% } %>
+            </div>
+          </div>
+        </a>
+      </div>
+      <% } %> <% }) %> <% } %>
+    </div>
+    <div class="btn-container">
+      <div class="btn">
+        <a href="#">View All Blogs</a>
+      </div>
+    </div>
+  </div>
+</section>

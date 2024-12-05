@@ -1,0 +1,47 @@
+<% pages.forEach(page => { %> <% if (page.slug === 'facts-and-figure') { %>
+<section class="fact-and-figure">
+  <div class="container">
+    <div class="fact-container" data-aos="fade-up">
+      <div class="row justify-content-center align-items-center px-2">
+        <div class="col-md-4 col-12 d-flex gap-2 align-items-center">
+          <div class="fig-container">
+            <i class="fa-regular fa-calendar-days"></i>
+          </div>
+          <div class="fct-container">
+            <% page.customFields.forEach(field => { %> <% if (field.fieldName
+            === 'Field_1') { %>
+            <span class="number"><%= field.value %>&nbsp;+</span>
+            <% } else if (field.fieldName === 'Field_2') { %>
+            <div class="info"><%= field.value %></div>
+            <% } %>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 d-flex gap-2 align-items-center">
+          <div class="fig-container">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="fct-container">
+            <% if (field.fieldName === 'Field_3') { %>
+            <span class="number"><%= field.value %>&nbsp;+</span>
+            <% } else if (field.fieldName === 'Field_4') { %>
+            <div class="info"><%= field.value %></div>
+            <% } %>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 d-flex gap-2 align-items-center">
+          <div class="fig-container">
+            <i class="fa-solid fa-link"></i>
+          </div>
+          <div class="fct-container">
+            <%  if (field.fieldName === 'Field_5') { %>
+            <span class="number"><%= field.value %>&nbsp;+</span>
+            <% } else if (field.fieldName === 'Field_6') { %>
+            <div class="info"><%= field.value %></div>
+            <% } %> <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% } %> <% }) %>

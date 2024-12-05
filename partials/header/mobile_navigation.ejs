@@ -1,0 +1,110 @@
+<!-- Mobile Nobigation -->
+<div class="mobile-navigation">
+  <div class="show-on-scroll d-flex justify-content-between align-items-center">
+    <img
+      src="/theme/AchieversEducationCenter/images/logo.png"
+      alt="Edulogy Logo"
+      class="logo"
+      id="mobile-logo"
+    />
+    <div class="menu-toggle" id="menuToggleScroll">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu">
+    <div class="menu-header">
+      <div class="logo-container">
+        <img
+          src="/theme/AchieversEducationCenter/images/logo.png"
+          alt="Achievers Education Center"
+        />
+      </div>
+      <div class="close-menu" id="closeMenu">&times;</div>
+    </div>
+    <div class="tab-buttons">
+      <div class="tab-btn active" data-target="menu-content">Menu</div>
+      <div class="tab-btn" data-target="info-content">Info</div>
+    </div>
+    <div class="tab-content">
+      <!-- Menu Content -->
+      <div id="menu-content" class="tab-panel active">
+        <ul class="menu-items">
+          <% let catCount = 0; %> <% const parentCategories =
+          categories.filter(category => !category.parent); %> <%
+          parentCategories.forEach(cat => { %> <% if (catCount < 4) { %>
+          <li class="has-submenu">
+            <% const childCategories = categories.filter(category =>
+            category.parent && category.parent._id.toString() ===
+            cat._id.toString()); %> <% if (childCategories.length > 0) { %>
+            <a href="javascript:void(0)">Pages <span>+</span></a>
+            <% }else{ %>
+            <a href="/category/<%= cat.slug %>">Pages</a>
+            <% } %> <% if (childCategories.length > 0) { %>
+            <ul class="submenu">
+              <li class="has-submenu-child">
+                <% childCategories.forEach(childCat => { %> <% const
+                grandChildCategories = categories.filter(category =>
+                category.parent && category.parent._id.toString() ===
+                childCat._id.toString()); %> <% if (grandChildCategories.length
+                > 0) { %>
+                <a href="javascript:void(0)">About <span>+</span></a>
+                <% }else { %>
+                <a href="/category/<%= childCat.slug %>">About</a>
+                <% } %> <% if (grandChildCategories.length > 0) { %>
+                <ul class="submenu-child">
+                  <% grandChildCategories.forEach(grandChildCat => { %>
+                  <li>
+                    <a href="/category/<%= grandChildCat.slug %>"
+                      ><%= grandChildCat.title %></a
+                    >
+                  </li>
+                  <% }); %>
+                </ul>
+                <% } %>
+              </li>
+              <% }); %>
+            </ul>
+            <% } %>
+          </li>
+          <% catCount++; %> <% } %> <% }); %>
+          <!-- Other Menu Items -->
+        </ul>
+      </div>
+
+      <!-- Info Content (this can be any static content you want to display) -->
+      <div id="info-content" class="tab-panel">
+        <div class="row pb-3 align-items-center">
+          <i class="col-2 footer-icon-contact fa-solid fa-location-dot"></i
+          ><span class="col-10 footer-contact address"
+            >203 Fake St. Mountain View, San Francisco, California, USA</span
+          >
+        </div>
+        <div class="row pb-3 align-items-center">
+          <i class="col-2 footer-icon-contact fa-solid fa-phone"></i>
+          <span class="col-10 footer-contact phone">+2 392 3929 210</span>
+        </div>
+        <div class="row pb-3 align-items-center">
+          <i class="col-2 footer-icon-contact fa-solid fa-envelope"></i>
+          <span class="col-10 footer-contact email"> info@yourdomain.com</span>
+        </div>
+        <div class="social-media d-flex gap-3 align-items-center">
+          <a href="#"
+            ><i class="social-icon fa-brands fa-facebook footer-icon"></i
+          ></a>
+          <a href="#"
+            ><i class="social-icon fa-brands fa-instagram footer-icon"></i
+          ></a>
+          <a href="#"
+            ><i class="social-icon fa-brands fa-twitter footer-icon"></i
+          ></a>
+          <a href="#"
+            ><i class="social-icon fa-brands fa-linkedin footer-icon"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Mobile Navigation -->

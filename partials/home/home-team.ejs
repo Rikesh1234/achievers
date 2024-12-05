@@ -1,0 +1,43 @@
+<section class="team-section">
+  <div class="container">
+    <div
+      class="serv-header d-flex justify-content-between align-items-center"
+    >
+      <div class="sub-title" data-aos="fade-up">Our Team</div>
+      <div class="btn" data-aos="fade-up">
+        <a href="#">View All Team Members</a>
+      </div>
+    </div>
+    <div class="row" >
+      <% teams.forEach(team => { %>
+      <div class="col-md-3 col-sm-6" data-aos="fade-up">
+        <div class="our-team">
+          <div class="pic">
+            <img
+              src="<%= team.featured_image ? team.featured_image : './theme/IG_Academy/images/default.png'"
+            />
+            <ul class="social">
+              <% if (team.facebook !== null) { %>
+              <li><a href="<%= team.facebook %>" class="fab fa-facebook"></a></li>
+              <% } %>
+              <% if (team.instagram !== null) { %>
+              <li><a href="<%= team.instagram %>" class="fab fa-instagram"></a></li>
+              <% } %>
+              <% if (team.linkedin !== null) { %>
+                <li><a href="<%= team.linkedin %>" class="fab fa-linkedin"></a></li>
+                <% } %>
+              <% if (team.twitter !== null) { %>
+              <li><a href="<%= team.twitter %>" class="fa-brands fa-twitter"></a></li>
+              <% } %>
+            </ul>
+          </div>
+          <div class="team-content">
+            <h3 class="title"><%= team.name %></h3>
+            <span class="post"><%= team.designation %></span>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>

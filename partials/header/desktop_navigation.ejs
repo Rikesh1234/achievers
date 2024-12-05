@@ -1,0 +1,63 @@
+<!-- Desktop Navigation -->
+<nav class="desktop-navigation">
+  <img
+    src="/theme/AchieversEducationCenter/images/logo.png"
+    alt="Edulogy Logo"
+    class="logo"
+  />
+  <ul class="menu">
+    <li>
+      <a class="<%= showingpage == 'home' ? 'selected' : '' %>" href="/"
+        >Home</a
+      >
+    </li>
+    <% let catCount = 0; %> <% const parentCategories =
+    categories.filter(category => !category.parent); %> <%
+    parentCategories.forEach(cat => { %> <% if (catCount < 4) { %>
+    <li class="<%= showingpage === cat.slug ? 'selected' : '' %>">
+      <% const childCategories = categories.filter(category => category.parent
+      && category.parent._id.toString() === cat._id.toString()); %>
+      <a href="/category/<%= cat.slug %>">
+        <%= cat.title %> <% if (childCategories.length > 0) { %>
+        <i class="fa-solid fa-angle-down"></i>
+        <% } %>
+      </a>
+
+      <% if (childCategories.length > 0) { %>
+      <ul class="dropdown">
+        <% childCategories.forEach(childCat => { %> <% const
+        grandChildCategories = categories.filter(category => category.parent &&
+        category.parent._id.toString() === childCat._id.toString()); %>
+        <li>
+          <a
+            href="/category/<%= childCat.slug %>"
+            class="d-flex justify-content-between w-100 px-2"
+          >
+            <%= childCat.title %> <% if (grandChildCategories.length > 0) { %>
+            <i class="fa-solid fa-angle-right"></i>
+            <% } %>
+          </a>
+          <% if (grandChildCategories.length > 0) { %>
+          <ul class="dropdown-submenu">
+            <% grandChildCategories.forEach(grandChildCat => { %>
+            <li>
+              <a href="/category/<%= grandChildCat.slug %>"
+                ><%= grandChildCat.title %></a
+              >
+            </li>
+            <% }); %>
+          </ul>
+          <% } %>
+        </li>
+        <% }); %>
+      </ul>
+      <% } %>
+    </li>
+    <% catCount++; %> <% } %> <% }); %>
+  </ul>
+  <div class="search-btn">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <div class="btn">Get an Appointment</div>
+  </div>
+</nav>
+<!-- End of Desktop Navigation -->

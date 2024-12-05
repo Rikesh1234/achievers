@@ -1,0 +1,97 @@
+<%- include('../partials/header/meta_tags') %>
+<title>Ig Academy</title>
+
+<!-- Include stylesheets and links -->
+<%- include('../partials/header/links') %>
+
+<!-- Desktop Navigation -->
+<%- include('../partials/header/desktop_navigation') %>
+
+<!-- Mobile Navigation -->
+<%- include('../partials/header/mobile_navigation') %>
+
+<div class="breadcrumb">
+  <div class="container">
+    <div class="row align-items-end">
+      <div class="col-md-6">
+        <div class="banner-txt">
+          <span class="tl-breadcrumb-title">Contact Page</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <ul class="tl-breadcrumb-nav d-flex">
+          <li><a href="index.html">Home</a></li>
+          <li class="current-page">
+            <i class="fa-solid fa-angle-right"></i>
+            <span>Contact</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="map-container" style="width: 100%; height: 400px; background-color: black;">
+    <iframe
+    src="<%= customFields %>"
+    width="100%"
+    height="100%"
+    style="border: 0"
+    allowfullscreen=""
+    loading="lazy"
+  ></iframe>
+</div>
+
+<div class="contact-container py-3">
+  <div class="container">
+    <div class="contact-container">
+      <div class="row">
+        <!-- Left Section (Image) -->
+        <% let contactPage; %>
+        <div class="left-section" data-aos="fade-right">
+              <% pages.forEach(page => { %>
+                <% if (page === 'contact') { %>
+                  <% contactPage = page; %>
+              <img src="<%= page.featured_image %>" alt="contact page" />
+              <% } %>
+            <% }); %>
+            </div>
+
+        <!-- Right Section (Form) -->
+        <div class="right-section">
+          <h2><%= contactPage ? (contactPage.tagline || 'Get In Touch With Us') : 'Get In Touch With Us' %></h2>
+          <form action="#">
+            <div class="form-group contact-form-group">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Input Name" />
+            </div>
+            <div class="form-group contact-form-group">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Input Address" />
+            </div>
+            <div class="form-group contact-form-group">
+              <i class="fas fa-phone"></i>
+              <input type="tel" placeholder="Input Number" />
+            </div>
+            <div class="form-group contact-form-group">
+              <i class="fas fa-info-circle"></i>
+              <input type="text" placeholder="Input Subject" />
+            </div>
+            <div class="form-group contact-form-group">
+              <i class="fas fa-paperclip"></i>
+              <textarea placeholder="Input Your Question"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include Footer -->
+<%- include('../partials/footer/footer') %>
+
+<!-- Include Scripts -->
+<%- include('../partials/footer/scripts') %>

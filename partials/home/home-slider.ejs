@@ -1,0 +1,21 @@
+<!-- hero section -->
+<div class="hero-section">
+  <div class="overlay"></div>
+  <video autoplay muted loop id="bg-video">
+    <source
+      src="/theme/AchieversEducationCenter/images/preview.mp4"
+      type="video/mp4"
+    />
+  </video>
+  <% let sliderCount = 0; %> <% sliders.forEach(function(slider) { %> <% if
+  (sliderCount < 1) {
+  <div class="content">
+    <h1 data-aos="fade-up"><%= slider.title %></h1>
+    <p data-aos="fade-up"><%= slider.subtitle %></p>
+    <div class="explore" data-aos="fade-up">
+      EXPLORE<i class="fa-solid fa-angles-down"></i>
+    </div>
+  </div>
+  <% sliderCount++ %> <% } %> <% }) %>
+</div>
+<!-- end of hero section -->
