@@ -1469,3 +1469,27 @@ footer li {
   .our-team-page{ margin-bottom: 30px; }
 }
 
+.editor-box{
+  margin-top: 20px;
+}
+
+.editor-box p{
+  color: #000;
+  font-size: 18px;
+}
+
+.gallery-container {
+  margin: 50px auto;
+  max-width: 1200px;
+  padding-bottom: 50px; /* Added padding for footer spacing */
+}
+.gallery-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+.gallery-item img {
+  width: 100%;
+  display: block;
+  border-radius: 25px;
+  height: auto; /* Ensure image scales properly */
+}

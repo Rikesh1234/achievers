@@ -1,6 +1,4 @@
-window.addEventListener('resize', AOS.refresh);
 window.addEventListener('scroll', AOS.refresh);
-
 let lastScrollY = window.scrollY;
 const navbar = document.querySelector('nav');
 const mobile_navbar = document.querySelector('.mobile-navigation');
@@ -39,9 +37,9 @@ menuToggleScroll.addEventListener('click', () => {
     mobileLogo.style.opacity= 0;
 });
 
-menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.add('open');
-});
+// menuToggle.addEventListener('click', () => {
+//     mobileMenu.classList.add('open');
+// });
 
 closeMenu.addEventListener('click', () => {
     mobileMenu.classList.remove('open');

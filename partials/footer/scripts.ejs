@@ -11,20 +11,3 @@
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.umd.min.js"></script>
     <script src="/theme/AchieversEducationCenter/js/script.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var gallery = document.querySelector("#lightgallery");
-        lightGallery(gallery, {
-          selector: ".gallery-item",
-          thumbnail: true,
-          zoom: true,
-        });
-
-        // Masonry Layout
-        var msnry = new Masonry(gallery, {
-          itemSelector: ".gallery-item",
-          columnWidth: ".gallery-item",
-          percentPosition: true,
-        });
-      });
-    </script>

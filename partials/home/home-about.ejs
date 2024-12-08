@@ -1,52 +1,38 @@
-<!-- about-section -->
-<% pages.forEach(page => { %> <% if (page.slug === 'about-us') { %>
-<section class="about-section">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6 col-12 left-section">
-        <div class="about-img-container" data-aos="fade-right">
-          <img
-            src="<%= page.featured_image ? page.featured_image : /theme/AchieversEducationCenter/public/images/about.jpg"
-            alt=""
-          />
+<% pages.forEach(page => { %>
+  <% if (page.slug === 'about-us') { %>
+    <section class="about-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Left Section -->
+          <div class="col-md-6 col-12 left-section">
+            <div class="about-img-container" data-aos="fade-right">
+              <img src="<%= page.featured_image || '/theme/AchieversEducationCenter/public/images/about.jpg' %>" alt="<%= page.title %>">
+            </div>
+          </div>
+          <!-- Right Section -->
+          <div class="col-md-6 col-12 right-section">
+            <div class="right-content" data-aos="fade-left">
+              <h2 class="title"><%= page.title %></h2>
+              <p><%- truncateWords(page.summary, 50) %></p>
+            </div>
+            <div class="checklist">
+              <ul class="row">
+                <% const allowedFields = ['Field_1', 'Field_2', 'Field_3', 'Field_4', 'Field_5']; %>
+                <% page.customFields.forEach(field => { %>
+                  <% if (allowedFields.includes(field.fieldName)) { %>
+                    <li class="col-md-4 col-6">
+                      <i class="fa-solid fa-check"></i>&nbsp;<%= field.value %>
+                    </li>
+                  <% } %>
+                <% }); %>
+              </ul>
+            </div>
+            <div class="btn">
+              <a href="#">More About Us</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-6 col-12 right-section">
-        <div class="right-content" data-aos="fade-left">
-          <h2 class="title"><%= page.title %></h2>
-          <p><%- truncateWords(page.summary, 50) %></p>
-        </div>
-        <div class="checklist">
-          <ul class="row">
-            <% page.customFields.forEach(field => { %> <% if (field.fieldName
-            === 'Field_1') { %>
-            <li class="col-md-4 col-6">
-              <i class="fa-solid fa-check"></i>&nbsp;<%= field.value %>
-            </li>
-            <% } else if (field.fieldName === 'Field_2') { %>
-            <li class="col-4 col-6">
-              <i class="fa-solid fa-check"></i>&nbsp;<%= field.value %>
-            </li>
-            <% } else if (field.fieldName === 'Field_3') { %>
-            <li class="col-4 col-6">
-              <i class="fa-solid fa-check"></i>&nbsp;<%= field.value %>
-            </li>
-            <% } else if (field.fieldName === 'Field_4') { %>
-            <li class="col-4 col-6">
-              <i class="fa-solid fa-check"></i>&nbsp;<%= field.value %>
-            </li>
-            <% } else if (field.fieldName === 'Field_5') { %>
-            <li class="col-4 col-6">
-              <i class="fa-solid fa-check"></i>&nbsp;<%= field.value %>
-            </li>
-            <% } %> <% }); %>
-          </ul>
-        </div>
-        <div class="btn">
-          <a href="#">More About Us</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<% } %> <% }) %>
+    </section>
+  <% } %>
+<% }); %>

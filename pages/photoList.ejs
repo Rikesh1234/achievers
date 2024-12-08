@@ -24,33 +24,34 @@
 
 <section class="listing">
   <div class="container">
-    <% if (posts && posts.length > 0) { %>
-      <%posts.forEach(post=>{ %>
-    <div class="list-box d-flex">
-      <div class="img-container" data-aos="fade-right">
+    <div class="row justify-content-between">
+      <% if (posts && posts.length > 0) { %> <%posts.forEach(post=>{ %>
+      <div class="photo-list-box col-12 col-md-6 col-lg-4">
         <a href="/post/<%= post._id %>">
-          <img src="<%= post.featured_image || './theme/IG_Academy/images/default.png' %>" alt="<%= post.title %>" />
+          <div class="img-container" data-aos="fade-right">
+            <img src="<%= post.featured_image || './theme/IG_Academy/images/default.png' %>" alt="<%= post.title %>" />
+            <div class="img-hover">
+              <i class="fa-solid fa-camera"></i>
+            </div>
+          </div>
+          <div class="list-container" data-aos="fade-left">
+            <div class="list-title">
+              <%= post.title %>
+            </div>
+            <div class="date-line"><% 
+              const publishedDate = new Date(post.published_date);
+              const options = { year: 'numeric', month: 'long', day: 'numeric' };
+              const formattedDate = publishedDate.toLocaleDateString('en-US', options); 
+            %>
+            <%= formattedDate %></div>
+            <div class="list-subtitle">
+              <%- truncateWords(post.summary, 50) %>
+            </div>
+          </div>
         </a>
       </div>
-      <div class="list-container" data-aos="fade-left">
-        <a href="/post/<%= post._id %>">
-          <div class="list-title">
-            <%= post.title %>
-          </div>
-          <div class="date-line"><% 
-            const publishedDate = new Date(post.published_date);
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const formattedDate = publishedDate.toLocaleDateString('en-US', options); 
-          %>
-          <%= formattedDate %></div>
-          <div class="list-subtitle">
-            <%- truncateWords(post.summary, 50) %>
-          </div>
-        </a>
-      </div>
+      <% })%> <% } %>
     </div>
-    <% })%>
-    <% } %>
 
     <div class="pagination" data-aos="fade-up">
       <% if (pagination.hasPrevPage) { %>
@@ -67,8 +68,9 @@
         <a href="?page=<%= pagination.nextPage %>&limit=<%= limit %>">Next &raquo;</a>
       <% } %>
     </div>
-
+    
   </div>
 </section>
 <!-- Include Footer -->
 <%- include('../partials/footer/footer') %>
+
