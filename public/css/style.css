@@ -49,7 +49,7 @@ nav {
   width: 100%;
   position: absolute;
   background: transparent;
-  z-index: 9999;
+  z-index: 999;
   background: rgba(255, 255, 255, 0);
   transition: all 0.7s ease;
 }
@@ -416,6 +416,12 @@ nav.nav-active .fa-solid{
 .search-btn .btn {
   border: 1px solid var(--brand-color-secondary);
   border-radius: 20px;
+  color: var(--brand-color-secondary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.search-btn .btn a{
   color: var(--brand-color-secondary);
   transition: all 0.3s ease;
   cursor: pointer;
@@ -1492,4 +1498,16 @@ footer li {
   display: block;
   border-radius: 25px;
   height: auto; /* Ensure image scales properly */
+}
+
+.search-btn .btn:hover a{
+  color: #000;
+}
+
+#search{
+  width: 83% !important;
+}
+
+.search-btn i {
+  color: #fff;
 }
