@@ -90,49 +90,7 @@
 </footer>
 <!-- end footer -->
 
-<!-- Testomonial Form Modal -->
-<% testomonials.forEach(testomonial => { %>
-<div
-  class="modal fade"
-  id="modal-<%= testomonial._id %>"
-  tabindex="-1"
-  aria-labelledby="modal-label-<%= testomonial._id %>"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modal-label-<%= testomonial._id %>">
-          <%= testomonial.name %>
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-4">
-            <img
-              src="<%= testomonial.featured_image %>"
-              alt="Image of <%= testomonial.name %>"
-              class="modal-profile"
-            />
-          </div>
-          <div class="col-8">
-            <span class="content">
-              <%- testomonial.content %>
-              <!-- Ensure content is safe if using raw HTML -->
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<% }); %>
+
 
 <!-- Testomonial form -->
 
