@@ -6,12 +6,12 @@
         class="company-detail postion-relative col-lg-3 col-md-6"
         data-aos="fade-up"
       >
-        <div class="footer-title">Achievers Education Consultancy</div>
+        <div class="footer-title">Achievers Learning Center</div>
         <div class="line"></div>
         <p class="gray-text">
-          A small river named Duden flows by their place and supplies it with
-          the necessary regelialia. It is a paradisematic country, in which
-          roasted parts of sentences fly into your mouth.
+          Achievers Learning Center is an educational tution center aimed at
+          helping students achieve their academic and career goals through
+          personalized guidance and expert support.
         </p>
         <div class="social-media d-flex gap-3 align-items-center">
           <a href="#"
@@ -37,9 +37,14 @@
         <div class="line"></div>
         <ul>
           <li class="selected"><a href="#">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="project.html">Project</a></li>
+          <% let catCount = 0; %> <% const parentCategories =
+          categories.filter(category => !category.parent); %> <%
+          parentCategories.forEach(cat => { %> <% if (catCount < 3) { %>
+          <li class="<%= showingpage === cat.slug ? 'selected' : '' %>">
+            <a href="/category/<%= cat.slug %>"> <%= cat.title %> </a>
+            <% catCount++; %> <% } %> <% }); %>
+          </li>
+
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -51,11 +56,10 @@
         <div class="footer-title">quick-links</div>
         <div class="line"></div>
         <ul>
-          <li class="selected"><a href="#">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="project.html">Project</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <% let staticPageCount = 0; %> <% pages.forEach(page => { %> <% if
+            (staticPageCount < 5) { %>
+            <li><a href="/page/<%= page.slug %>"><%= page.title %></a></li>
+            <% staticPageCount++; %> <% } %> <% }) %>
         </ul>
       </div>
 
@@ -68,29 +72,27 @@
         <div class="row pb-3 align-items-center">
           <i class="col-2 footer-icon-contact fa-solid fa-location-dot"></i
           ><span class="col-10 footer-contact address"
-            >203 Fake St. Mountain View, San Francisco, California, USA</span
+            >Bagbazar, Kathmandu, Nepal</span
           >
         </div>
         <div class="row pb-3 align-items-center">
           <i class="col-2 footer-icon-contact fa-solid fa-phone"></i>
-          <span class="col-10 footer-contact phone">+2 392 3929 210</span>
+          <span class="col-10 footer-contact phone">+977-9828975514</span>
         </div>
         <div class="row pb-3 align-items-center">
           <i class="col-2 footer-icon-contact fa-solid fa-envelope"></i>
-          <span class="col-10 footer-contact email"> info@yourdomain.com</span>
+          <span class="col-10 footer-contact email"> info@achieverslearningcenter.com</span>
         </div>
       </div>
     </div>
   </div>
 
   <div class="copyright-section" data-aos="fade-up">
-    <span class="copy">Copyright © 2024 Ideagen | All rights reserved</span
+    <span class="copy">Copyright © <%= new Date().getFullYear() %> Achievers | All rights reserved</span
     >&nbsp; Site by: <a href="#">CyBurning</a>
   </div>
 </footer>
 <!-- end footer -->
-
-
 
 <!-- Testomonial form -->
 
@@ -168,7 +170,6 @@
             </select>
           </div>
 
-          
           <div class="mb-3 col-12">
             <label for="timeShift" class="form-label">Shift</label>
             <select
@@ -232,7 +233,6 @@
   aria-labelledby="searchModalLabel"
   aria-hidden="true"
 >
-
   <div class="modal-dialog modal modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -256,9 +256,11 @@
               placeholder="Type Here..."
               required
             />
-            
-          <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary col-2"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary col-2">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
           </div>
         </form>
       </div>

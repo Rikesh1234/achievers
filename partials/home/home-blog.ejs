@@ -24,7 +24,7 @@
                   <h3><%= post.title %></h3>
                   <p><%- truncateWords(post.summary, 50) %></p>
                   <div class="course-meta">
-                    <% const fields = page.customFields.filter(field =>
+                    <% const fields = post.customFields.filter(field =>
                       ['Field_1', 'Field_2', 'Field_3'].includes(field.fieldName)
                     ); %>
                     <% fields.forEach(field => { %>

@@ -20,24 +20,24 @@
           <div class="course-content">
             <span class="category"><%= post.tag_line %></span>
             <h3><%= post.title %></h3>
-            <p><%- truncateWords(cat.summary, 50) %></p>
+            <p><%- truncateWords(post.summary, 50) %></p>
             <div class="course-meta">
-              <% page.customFields.forEach(field => { %> <% if (field.fieldName
+              <% post.customFields.forEach(field => { %> <% if (field.fieldName
               === 'Field_1') { %>
               <span><i class="fa fa-users"></i> <%= field.value %></span>
               <% } else if (field.fieldName === 'Field_2') { %>
               <span><i class="fa fa-clock-o"></i> <%= field.value %></span>
               <% } else if (field.fieldName === 'Field_3') { %>
               <span class="price"><%= field.value %></span>
-              <% } %>
+              <% } %> <% }) %>
             </div>
           </div>
         </a>
       </div>
-      <% }) %> <% } %> <% }) %>  <% } %>
+       <% } %> <% }) %>  <% } %>
       <!-- Repeat similar blocks for additional courses -->
     </div>
-    <div class="btn-container" data-aos="fade-up">
+    <div class="btn-container mt-2" data-aos="fade-up">
       <div class="btn">
         <a href="#">View All Courses</a>
       </div>

@@ -1511,3 +1511,8 @@ footer li {
 .search-btn i {
   color: #fff;
 }
+
+.test-section p {
+  color: #000;
+  margin-bottom: 20px;
+}
