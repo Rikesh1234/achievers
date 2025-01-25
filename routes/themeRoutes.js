@@ -21,6 +21,9 @@ router.post('/submit-tutor-form', homeController.submitStudentForm);
 // router.get('/contact', (req, res) => {
 //     res.render('theme/IG_Academy/pages/contact',{ showingpage: 'contact'}); 
 //   });
+
+router.get('/team', homeController.getTeamPage);
+
 router.get('/contact', homeController.getContactPage);
 
 

@@ -1,0 +1,55 @@
+<%- include('../partials/header/header') %>
+
+<!-- intro-section -->
+<% pageData = null %> <%pages.forEach(page=>{ %> <%if(page.slug == 'team'){
+%> <% pageData = page %> <% } %> <% })%>
+<section class="listing-intro">
+  <div class="container">
+    <div class="overlay"></div>
+    <div class="intro-header">
+      <div class="into">
+        <% if (pageData != null){ %>
+        <h1><%= pageData.title %></h1>
+        <% }else { %>
+        <h1>Our Team</h1>
+        <% } %>
+      </div>
+      <div class="breadcrumbs">
+        <ul>
+          <li>Home</li>
+          <li class="icon"><i class="fa-solid fa-chevron-right"></i></li>
+          <li>Team</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end of  intro-section -->
+
+<section class="listing">
+    <div class="container">
+        <div class="row">
+            <%teams.forEach(team=>{ %>
+            <div class="col-md-4 col-sm-6">
+                <div class="our-team-page">
+                    <div class="pic">
+                        <img src="<%= team.featured_image %>">
+                        <ul class="social">
+                            <li><a href="<%= team.facebook %>" class="fab fa-facebook"></a></li>
+                            <li><a href="<%= team.twitter %>" class="fa-brands fa-x-twitter"></a></li>
+                            <li><a href="<%= team.instagram %>" class="fab fa-instagram"></a></li>
+                            <li><a href="<%= team.linkedin %>" class="fab fa-linkedin"></a></li>
+                        </ul>
+                    </div>
+                    <div class="team-content">
+                        <h3 class="title"><%= team.name %></h3>
+                        <span class="post"><%= team.designation %></span>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+<!-- Include Footer -->
+<%- include('../partials/footer/footer') %>
