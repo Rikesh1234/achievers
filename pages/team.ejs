@@ -1,7 +1,7 @@
 <%- include('../partials/header/header') %>
 
 <!-- intro-section -->
-<% pageData = null %> <%pages.forEach(page=>{ %> <%if(page.slug == 'team'){
+<% pageData = null %> <%staticPages.forEach(page=>{ %> <%if(page.slug == 'team'){
 %> <% pageData = page %> <% } %> <% })%>
 <section class="listing-intro">
   <div class="container">

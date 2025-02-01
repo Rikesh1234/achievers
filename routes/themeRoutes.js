@@ -22,7 +22,7 @@ router.post('/submit-tutor-form', homeController.submitStudentForm);
 //     res.render('theme/IG_Academy/pages/contact',{ showingpage: 'contact'}); 
 //   });
 
-router.get('/team', homeController.getTeamPage);
+// router.get('/team', homeController.getTeamPage);
 
 router.get('/contact', homeController.getContactPage);
 

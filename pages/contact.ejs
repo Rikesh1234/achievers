@@ -1,8 +1,7 @@
 <%- include('../partials/header/header') %>
 
 <!-- intro-section -->
-<% pageData = null %> <%pages.forEach(page=>{ %> <%if(page.slug == 'contact'){
-%> <% pageData = page %> <% } %> <% })%>
+<% pageData = null %> <% staticPages.forEach(page => { %> <% if (page.slug == 'contact') { %> <% pageData = page %> <% } %> <% }) %>
 <section class="listing-intro">
   <div class="container">
     <div class="overlay"></div>
