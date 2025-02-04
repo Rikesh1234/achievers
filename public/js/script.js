@@ -37,9 +37,9 @@ menuToggleScroll.addEventListener('click', () => {
     mobileLogo.style.opacity= 0;
 });
 
-// menuToggle.addEventListener('click', () => {
-//     mobileMenu.classList.add('open');
-// });
+menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+});
 
 closeMenu.addEventListener('click', () => {
     mobileMenu.classList.remove('open');
