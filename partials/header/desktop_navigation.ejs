@@ -1,76 +1,76 @@
 <!-- Desktop Navigation -->
 <nav class="desktop-navigation">
-  <img
-    src="/theme/achievers/images/logo.png"
-    alt="Achievers Learning Center Logo"
-    class="logo"
-  />
+  <img src="/theme/achievers/images/logo.png" alt="Achievers Learning Center Logo" class="logo" />
+
   <ul class="menu">
     <li>
-      <a class="<%= showingpage == 'home' ? 'selected' : '' %>" href="/"
-        >Home</a
-      >
+      <a class="<%= showingpage === 'home' ? 'selected' : '' %>" href="/">Home</a>
     </li>
-    <% let catCount = 0; %> <% const parentCategories =
-    categories.filter(category => !category.parent); %> <%
-    parentCategories.forEach(cat => { %> <% if (catCount < 4) { %>
-    <li class="<%= showingpage === cat.slug ? 'selected' : '' %>">
-      <% const childCategories = categories.filter(category => category.parent
-      && category.parent._id.toString() === cat._id.toString()); %>
-      <a href="/category/<%= cat.slug %>">
-        <%= cat.title %> <% if (childCategories.length > 0) { %>
-        <i class="fa-solid fa-angle-down"></i>
-        <% } %>
-      </a>
 
-      <% if (childCategories.length > 0) { %>
-      <ul class="dropdown">
-        <% childCategories.forEach(childCat => { %> <% const
-        grandChildCategories = categories.filter(category => category.parent &&
-        category.parent._id.toString() === childCat._id.toString()); %>
-        <li>
-          <a
-            href="/category/<%= childCat.slug %>"
-            class="d-flex justify-content-between w-100 px-2"
-          >
-            <%= childCat.title %> <% if (grandChildCategories.length > 0) { %>
-            <i class="fa-solid fa-angle-right"></i>
-            <% } %>
-          </a>
-          <% if (grandChildCategories.length > 0) { %>
-          <ul class="dropdown-submenu">
-            <% grandChildCategories.forEach(grandChildCat => { %>
-            <li>
-              <a href="/category/<%= grandChildCat.slug %>"
-                ><%= grandChildCat.title %></a
-              >
-            </li>
+    <% 
+      let catCount = 0;
+      const parentCategories = categories.filter(category => !category.parent);
+
+      // Create a lookup object for child categories
+      const categoryLookup = categories.reduce((acc, category) => {
+        if (category.parent) {
+          acc[category.parent._id] = acc[category.parent._id] || [];
+          acc[category.parent._id].push(category);
+        }
+        return acc;
+      }, {});
+    %>
+
+    <% parentCategories.slice(0, 4).forEach(cat => { %>
+      <% const childCategories = categoryLookup[cat._id] || []; %>
+      <li class="<%= showingpage === cat.slug ? 'selected' : '' %>">
+        <a href="/category/<%= cat.slug %>">
+          <%= cat.title %> 
+          <% if (childCategories.length) { %>
+            <i class="fa-solid fa-angle-down"></i>
+          <% } %>
+        </a>
+
+        <% if (childCategories.length) { %>
+          <ul class="dropdown">
+            <% childCategories.forEach(childCat => { %>
+              <% const grandChildCategories = categoryLookup[childCat._id] || []; %>
+              <li>
+                <a href="/category/<%= childCat.slug %>" class="d-flex justify-content-between w-100 px-2">
+                  <%= childCat.title %>
+                  <% if (grandChildCategories.length) { %>
+                    <i class="fa-solid fa-angle-right"></i>
+                  <% } %>
+                </a>
+
+                <% if (grandChildCategories.length) { %>
+                  <ul class="dropdown-submenu">
+                    <% grandChildCategories.forEach(grandChildCat => { %>
+                      <li>
+                        <a href="/category/<%= grandChildCat.slug %>"><%= grandChildCat.title %></a>
+                      </li>
+                    <% }); %>
+                  </ul>
+                <% } %>
+              </li>
             <% }); %>
           </ul>
-          <% } %>
-        </li>
-        <% }); %>
-      </ul>
-      <% } %>
-    </li>
-    <% catCount++; %> <% } %> <% }); %>
+        <% } %>
+      </li>
+    <% }); %>
+
     <li><a href="/contact">Contact</a></li>
   </ul>
+
   <div class="search-btn">
-    <a
-        href="javascript:void(0);"
-        class="login-btn"
-        data-bs-toggle="modal"
-        data-bs-target="#searchModal"
-        ><i class="fa-solid fa-magnifying-glass"></i></a>
+    <a href="javascript:void(0);" class="login-btn" data-bs-toggle="modal" data-bs-target="#searchModal">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
     <div class="btn">
-      <a
-        href="javascript:void(0);"
-        class="login-btn"
-        data-bs-toggle="modal"
-        data-bs-target="#appointmentModal"
-        >Get an Appointment</a
-      ></div>
+      <a href="javascript:void(0);" class="login-btn" data-bs-toggle="modal" data-bs-target="#appointmentModal">
+        Get an Appointment
+      </a>
+    </div>
   </div>
 </nav>
 <!-- End of Desktop Navigation -->

@@ -19,6 +19,13 @@
 <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=6751f7e627271500125f16a2&product=video-share-buttons' async='async'></script>
 
 <script>
+   setTimeout(function() {
+        var myModal = new bootstrap.Modal(document.getElementById('appointmentModal'));
+        myModal.show();
+    }, 1000);
+</script>
+
+<script>
   $(document).ready(function () {
     // Initialize Select2 for all select elements with the 'select2' class
     $('.select2').select2({

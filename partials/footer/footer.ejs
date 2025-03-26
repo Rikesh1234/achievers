@@ -1,3 +1,4 @@
+<% var contactpage = staticpages.find(page => page.slug === "contact"); %>
 <!-- footer -->
 <footer>
   <div class="container">
@@ -9,23 +10,28 @@
         <div class="footer-title">Achievers Learning Center</div>
         <div class="line"></div>
         <p class="gray-text">
-          Achievers Learning Center is an educational tution center aimed at
-          helping students achieve their academic and career goals through
-          personalized guidance and expert support.
+          <% const aboutUsPage = staticpages.find(page => page.slug === "about-us"); %>
+          <% console.log(aboutUsPage) %>
+          <% if (aboutUsPage) { %>
+            <%- truncateWords(aboutUsPage.summary, 50) %>
+          <% } %>
         </p>
         <div class="social-media d-flex gap-3 align-items-center">
-          <a href="#"
-            ><i class="social-icon fa-brands fa-facebook footer-icon"></i
-          ></a>
-          <a href="#"
-            ><i class="social-icon fa-brands fa-instagram footer-icon"></i
-          ></a>
-          <a href="#"
-            ><i class="social-icon fa-brands fa-twitter footer-icon"></i
-          ></a>
-          <a href="#"
-            ><i class="social-icon fa-brands fa-linkedin footer-icon"></i
-          ></a>
+          <% if (contactpage && contactpage.customFieldValues) { %>
+            <% const socialIcons = { 
+              facebook: "fa-facebook-f", 
+              twitter: "fa-x-twitter", 
+              linkedin: "fa-linkedin-in", 
+              youtube: "fa-youtube" 
+            }; %>
+            <% Object.entries(contactpage.customFieldValues).forEach(([key, value]) => { %>
+              <% if (socialIcons[key] && value) { %>
+                <a href="<%= value %>">
+                  <i class="fa-brands <%= socialIcons[key] %> social-icon footer-icon"></i>
+                </a>
+              <% } %>
+            <% }) %>
+          <% } %>
         </div>
       </div>
 
@@ -56,7 +62,7 @@
         <div class="footer-title">quick-links</div>
         <div class="line"></div>
         <ul>
-          <% let staticPageCount = 0; %> <% staticPages.forEach(page => { %> <% if
+          <% let staticPageCount = 0; %> <% staticpages.forEach(page => { %> <% if
             (staticPageCount < 5) { %>
             <li><a href="/page/<%= page.slug %>"><%= page.title %></a></li>
             <% staticPageCount++; %> <% } %> <% }) %>
@@ -72,16 +78,16 @@
         <div class="row pb-3 align-items-center">
           <i class="col-2 footer-icon-contact fa-solid fa-location-dot"></i
           ><span class="col-10 footer-contact address"
-            >Bagbazar, Kathmandu, Nepal</span
+            ><%= contactpage?.customFieldValues?.address || 'Address not available' %></span
           >
         </div>
         <div class="row pb-3 align-items-center">
           <i class="col-2 footer-icon-contact fa-solid fa-phone"></i>
-          <span class="col-10 footer-contact phone">+977-9828975514</span>
+          <span class="col-10 footer-contact phone"><%- contactpage?.customFieldValues?.phone || 'Phone not available' %></span>
         </div>
         <div class="row pb-3 align-items-center">
           <i class="col-2 footer-icon-contact fa-solid fa-envelope"></i>
-          <span class="col-10 footer-contact email"> info@achieverslearningcenter.com</span>
+          <span class="col-10 footer-contact email"> <%= contactpage?.customFieldValues?.email || 'Email not available' %></span>
         </div>
       </div>
     </div>

@@ -1,38 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./links') %> <%- include('./meta_tags') %>
+<head>
+  <%- include('./links') %> 
+  <%- include('./meta_tags') %>
 
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-T6SK35RQ');</script>
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T6SK35RQ');
+  </script>
   <!-- End Google Tag Manager -->
-  </head>
+</head>
+<body>
+
   <header>
     <div class="top-bar">
       <div class="contact-info">
-        <p class="m-0">
-          <i class="header-icon fa-solid fa-phone"></i>+977 01-5922071 |
-          &nbsp;<i class="header-icon fa-solid fa-envelope"></i>
-          info@achieverslearningcenter.com
-        </p>
+        <% 
+          // Find contact page once
+          const contactPage = staticpages.find(page => page.slug === "contact");
+          const contactFields = contactPage?.customFieldValues ?? {};
+        %>
+
+        <% if (contactFields.phone || contactFields.email) { %>
+          <p class="m-0">
+            <% if (contactFields.phone) { %>
+              <i class="header-icon fa-solid fa-phone"></i> <%= contactFields.phone %> |
+            <% } %>
+            <% if (contactFields.email) { %>
+              <i class="header-icon fa-solid fa-envelope"></i> <%= contactFields.email %>
+            <% } %>
+          </p>
+        <% } %>
       </div>
+
       <div class="menu-toggle" id="menuToggle">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
       </div>
+
       <div class="icons">
-        <a href="#"><i class="fa-brands fa-facebook-f soical-icon"></i></a>
-        <a href="#"><i class="fa-brands fa-x-twitter soical-icon"></i></a>
-        <a href="#"><i class="fa-brands fa-linkedin-in soical-icon"></i></a>
-        <a href="#"><i class="fa-brands fa-youtube soical-icon"></i></a>
+        <% if (contactFields.facebook || contactFields.twitter || contactFields.linkedin || contactFields.youtube) { %>
+          <% if (contactFields.facebook) { %>
+            <a href="<%= contactFields.facebook %>">
+              <i class="fa-brands fa-facebook-f social-icon"></i>
+            </a>
+          <% } %>
+          <% if (contactFields.twitter) { %>
+            <a href="<%= contactFields.twitter %>">
+              <i class="fa-brands fa-x-twitter social-icon"></i>
+            </a>
+          <% } %>
+          <% if (contactFields.linkedin) { %>
+            <a href="<%= contactFields.linkedin %>">
+              <i class="fa-brands fa-linkedin-in social-icon"></i>
+            </a>
+          <% } %>
+          <% if (contactFields.youtube) { %>
+            <a href="<%= contactFields.youtube %>">
+              <i class="fa-brands fa-youtube social-icon"></i>
+            </a>
+          <% } %>
+        <% } %>
       </div>
     </div>
-    <%- include('./desktop_navigation') %> <%- include('./mobile_navigation') %>
+
+    <%- include('./desktop_navigation') %> 
+    <%- include('./mobile_navigation') %>
   </header>
-  <body></body>
+
+</body>
 </html>
