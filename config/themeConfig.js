@@ -11,6 +11,8 @@ module.exports = {
         "column_1" : 'Tution Type',
         "column_2" : 'Shift Time',
         "column_3" : 'Subject',
+        "column_4" : 'Address',
+        "column_5" : 'Mail_title',
     },
 
     POST_CATEGORY_SECTION: [
