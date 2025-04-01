@@ -13,6 +13,7 @@ module.exports = {
         "column_3" : 'Subject',
         "column_4" : 'Address',
         "column_5" : 'Mail_title',
+        "column_6" : 'Gratuated School'
     },
 
     POST_CATEGORY_SECTION: [

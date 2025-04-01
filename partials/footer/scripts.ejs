@@ -104,6 +104,7 @@
       column_3: $('#subject').val() ?? null,
       column_4: $('#address').val() ?? null,
       column_5: $('#mail_title').val() ?? null,
+      column_6: $('#gratuated_school').val() ?? null,
     };
 
     $.ajax({
@@ -118,7 +119,9 @@
           text: 'Your appointment request has been sent successfully!',
           icon: 'success',
           confirmButtonText: 'OK',
-        });
+        }).then(() => {
+                location.reload(); // Reloads the page after the user clicks "OK"
+            });
       },
       error: function (error) {
         // Show error message using SweetAlert
