@@ -1,7 +1,9 @@
 <%- include('../partials/header/header') %>
 
 <!-- intro-section -->
-<% pageData = null %> <% staticPages.forEach(page => { %> <% if (page.slug == 'contact') { %> <% pageData = page %> <% } %> <% }) %>
+<% pageData = null %> <% staticpages.forEach(page => { %> <% if (page.slug ==
+'contact') { %> <% pageData = page %> <% } %> <% }) %>
+
 <section class="listing-intro">
   <div class="container">
     <div class="overlay"></div>
@@ -27,12 +29,11 @@
 
 <section class="contact-page">
   <!-- Top Section: Google Map -->
-  <% if (pageData != null){ %> <% pageData.customFields.forEach(field => { %> <%
-  if (field.fieldName === 'location') { %>
+  <% if (pageData) { %>
   <div class="map-container" style="width: 100%; height: 400px">
-    <%= field.value %>
+    <%= pageData?.customFieldValues?.location || '' %>
   </div>
-  <% } %> <% }) %><% } %>
+  <% } %> 
 
   <!-- Bottom Section: Company Info and Contact Form -->
   <div class="container my-5">
@@ -44,48 +45,40 @@
           <div class="info-item mb-4 d-flex align-items-center">
             <i class="fa-solid fa-location-dot fa-2x text-primary"></i>
             <div class="ms-3">
-              <% if (pageData != null){ %> <%
-              pageData.customFields.forEach(field => { %> <% if (field.fieldName
-              === 'address') { %>
+              <% if (pageData) { %>
               <h5>Address</h5>
-              <p><%= field.value %></p>
-              <% } %> <% }) %><% } %>
+              <p class="text-black"><%= pageData?.customFieldValues?.address || '' %></p>
+              <% } %> 
             </div>
           </div>
 
           <div class="info-item mb-4 d-flex align-items-center">
             <i class="fa-solid fa-phone fa-2x text-success"></i>
             <div class="ms-3">
-              <% if (pageData != null){ %> <%
-              pageData.customFields.forEach(field => { %> <% if (field.fieldName
-              === 'phone') { %>
+              <% if (pageData) { %> 
               <h5>Phone</h5>
-              <p><%= field.value %></p>
-              <% } %> <% }) %><% } %>
+              <p class="text-black"><%= pageData?.customFieldValues?.phone || '' %></p>
+               <% } %>
             </div>
           </div>
 
           <div class="info-item mb-4 d-flex align-items-center">
             <i class="fa-solid fa-envelope fa-2x text-danger"></i>
             <div class="ms-3">
-              <% if (pageData != null){ %> <%
-              pageData.customFields.forEach(field => { %> <% if (field.fieldName
-              === 'email') { %>
+              <% if (pageData) { %>
               <h5>Email</h5>
-              <p><%= field.value %></p>
-              <% } %> <% }) %><% } %>
+              <p class="text-black"><%= pageData?.customFieldValues?.email || '' %></p>
+              <% } %>
             </div>
           </div>
 
           <div class="info-item d-flex align-items-center">
             <i class="fa-solid fa-clock fa-2x text-info"></i>
             <div class="ms-3">
-              <% if (pageData != null){ %> <%
-              pageData.customFields.forEach(field => { %> <% if (field.fieldName
-              === 'office_hours') { %>
+              <% if (pageData) { %> 
               <h5>Office Hours</h5>
-              <p><%= field.value %></p>
-              <% } %> <% }) %> <% } %>
+              <p class="text-black"><%= pageData?.customFieldValues?.["office-hours"] || '' %></p>
+              <% } %>
             </div>
           </div>
         </div>

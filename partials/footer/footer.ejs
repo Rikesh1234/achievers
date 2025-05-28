@@ -11,7 +11,7 @@
         <div class="line"></div>
         <p class="gray-text">
           <% const aboutUsPage = staticpages.find(page => page.slug === "about-us"); %>
-          <% console.log(aboutUsPage) %>
+         
           <% if (aboutUsPage) { %>
             <%- truncateWords(aboutUsPage.summary, 50) %>
           <% } %>
